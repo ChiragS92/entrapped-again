@@ -3,12 +3,15 @@ __Tiny little minefield of our dreams__
 
 Inside your $GOPATH/src create the following directory structure
 
+#### Cloning
+```
+
 $ mkdir github.com
 $ cd github.com
 $ mkdir kgthegreat
 $ git clone git@github.com:kgthegreat/entrapped-again.git
 
-
+```
 
 #### client setup 
 ```
