@@ -1,7 +1,14 @@
 # Entrapped
 __Tiny little minefield of our dreams__
 
-git clone git@github.com:SKatiyar/entrapped.git
+Inside your $GOPATH/src create the following directory structure
+
+$ mkdir github.com
+$ cd github.com
+$ mkdir kgthegreat
+$ git clone git@github.com:kgthegreat/entrapped-again.git
+
+
 
 #### client setup 
 ```

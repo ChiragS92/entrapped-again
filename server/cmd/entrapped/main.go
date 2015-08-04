@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/SKatiyar/entrapped/server"
+	"github.com/kgthegreat/entrapped-again/server"
 	"os"
 )
 
