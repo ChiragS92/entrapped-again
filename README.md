@@ -1,14 +1,18 @@
 # Entrapped
 __Tiny little minefield of our dreams__
 
-Inside your $GOPATH/src create the following directory structure
+
 
 #### Cloning
 ```
+Inside your $GOPATH/src create the following directory structure
 
 $ mkdir github.com
 $ cd github.com
 $ mkdir kgthegreat
+
+And then clone
+
 $ git clone git@github.com:kgthegreat/entrapped-again.git
 
 ```
