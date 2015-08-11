@@ -3,7 +3,7 @@
 var AppDispatcher = require('../dispatchers/app_dispatcher.js');
 var _ = require('../../src/utility/utils.js');
 
-var apiUrl = "ws://entrapped.herokuapp.com";
+var apiUrl = "localhost:7000";
 
 /* websocket reference */
 var conn = null;
