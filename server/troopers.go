@@ -20,7 +20,7 @@ const (
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  512,
 	WriteBufferSize: 512,
-	// CheckOrigin:     checkOrigin,
+	CheckOrigin:     checkOrigin,
 }
 
 func checkOrigin(req *http.Request) bool {
