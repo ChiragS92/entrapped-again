@@ -3,6 +3,7 @@ package entrapped
 import (
 	"github.com/kgthegreat/entrapped-again/Godeps/_workspace/src/github.com/julienschmidt/httprouter"
 	"net/http"
+	"log"
 )
 
 const (
@@ -30,6 +31,8 @@ func Start(addr string) {
 	router.GET("/players/:id", addPlayer)
 
 	// start listening to incoming connections
+	log.Println("Starting server at ", addr)
+
 	listenErr := http.ListenAndServe(addr, router)
 	if listenErr != nil {
 		logger.Println(listenErr)
