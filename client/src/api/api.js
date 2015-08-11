@@ -20,6 +20,9 @@ module.exports = {
 
       conn.onmessage = function(evt) {
         //console.log('data from server', evt);
+        if(evt.data == "Nickname already used!") {
+          AppDispatcher.handleServerAction("error");
+        } 
         var data =  _.getObject(evt.data);
 
         //console.log('data', data);

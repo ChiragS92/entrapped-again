@@ -1,10 +1,28 @@
 import React from 'react/addons';
+import { Router, Link } from 'react-router';
+import Api from '../api/api.js';
 
 import Blocks from './Blocks.jsx';
+
+import MinesStore from '../stores/minestore.js';
 
 class Field extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClick1 = this.handleClick1.bind(this);
+  }
+
+   handleClick(e) {
+    var msg = "data:exit:[idx = 5 ]";
+    Api.send(msg);
+    return false;
+  }
+
+  handleClick1(e) {
+    var msg = "data:new";
+    Api.send(msg);
+    return false;
   }
   
   render() {
@@ -16,9 +34,9 @@ class Field extends React.Component {
     });
 
     var nodes = [];
-    for (var i = 1; i <= 5; i++) {
+    for (var i = 1; i <= 6; i++) {
       var classname = "fa fa-2x fa-heartbeat heart-icons";
-      
+
       if (i <= this.props.player.life) {
         classname = classname + " life-status__active";
       }
@@ -35,6 +53,9 @@ class Field extends React.Component {
           </span>
         </div>
         <h2 className="minefield__text--instructions">{this.props.player.username}</h2>
+        <Link to="/home" onClick={this.handleClick}>Exit</Link>
+        <br />
+        <Link to="/minefield" onClick={this.handleClick1}>New Game</Link>
       </div>
     )
   }

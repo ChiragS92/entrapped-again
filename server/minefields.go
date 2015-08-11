@@ -9,6 +9,7 @@ const (
 	open  int = 9
 	empty int = 0
 	mine  int = -2
+	life  int = 2
 )
 
 type mineField struct {
@@ -27,6 +28,23 @@ func createEmptyMineField(size int) *mineField {
 	field := make([]int, (size * size))
 
 	return &mineField{field, size}
+}
+
+func (m *mineField) addRandomLives(numLives int) *mineField {
+	size := len(m.field)
+
+	for i := 0; i < numLives; i++ {
+		x := randomInt(size - 1)
+
+		val := m.field[x]
+		if val == empty {
+			m.field[x] = life
+		} else {
+			i--
+		}
+	}
+
+	return m
 }
 
 func (m *mineField) addRandomBombs(numBombs int) *mineField {

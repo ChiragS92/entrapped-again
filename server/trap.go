@@ -7,7 +7,7 @@ type trap struct {
 
 func makeTrap(size, numBombs, lifes int) *trap {
 	return &trap{
-		trapMap: createEmptyMineField(size).addRandomBombs(numBombs),
+		trapMap: createEmptyMineField(size).addRandomBombs(numBombs).addRandomLives(3),
 		lifes:   lifes,
 	}
 }
@@ -22,7 +22,10 @@ func (t *trap) open(idx int) (int, int, string) {
 		if ele == mine {
 			t.lifes--
 			return ele, t.lifes, ""
-		} else {
+		} else if ele == life {
+			t.lifes++
+			return ele, t.lifes, ""
+		}else {
 			return ele, t.lifes, ""
 		}
 	}

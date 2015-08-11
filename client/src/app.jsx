@@ -19,6 +19,7 @@ let Routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="home" path="/home" handler={Home}/>
     <Route name="minefield" path="/minefield" handler={Minefield}/>
+    <Route name="error" path="/error" handler={Error}/>
     <DefaultRoute handler={Home} />
   </Route>
 )

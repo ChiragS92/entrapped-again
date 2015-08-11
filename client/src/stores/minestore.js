@@ -37,13 +37,13 @@ var getMatrix = function(size) {
 /* username */
 var player = {
   'username' : '',
-  'life' : 5,
+  'life' : 6,
   'size' : 0
 };
 
 var enemy = {
   'username' : '',
-  'life' : 5,
+  'life' : 6,
   'size' : 0
 };
 
@@ -97,6 +97,7 @@ MinesStore.dispatchToken = AppDispatcher.register(function(payload) {
       /* only when ready, show the minefields */
       enemy.mines = getMatrix(enemy.size);
       player.mines = getMatrix(player.size);
+      console.log(enemy.mines);
       MinesStore.emitChange();
       break;
 

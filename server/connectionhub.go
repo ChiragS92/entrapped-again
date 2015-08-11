@@ -2,6 +2,7 @@ package entrapped
 
 import (
 	"strconv"
+	"fmt"
 )
 
 // connectionhub to manage all connections
@@ -35,7 +36,6 @@ func (ch *connectionhub) run() {
 		"[life=" + strconv.Itoa(lifes) + "]:"
 	resultState := "data:result:"
 	enemyState := "data:enemy:"
-
 	for {
 		select {
 		case t := <-ch.enter:
@@ -67,6 +67,21 @@ func (ch *connectionhub) run() {
 				m.t.data <- []byte(msgErr)
 			} else {
 				switch msg.command {
+				case cmdNew :
+							fmt.Println("Inside cmdNew");
+							ch.troopers[m.t] = false
+							for key, val := range ch.troopers {
+								if !val && key != m.t {
+									ch.matches[m.t] = key
+									ch.matches[key] = m.t
+									p1Tag := readyState + "[name=" + m.t.nickname + "]"
+									key.data <- []byte(p1Tag)
+									p2Tag := readyState + "[name=" + key.nickname + "]"
+									m.t.data <- []byte(p2Tag)
+									break
+								}
+								fmt.Println(m.t.data);
+							}
 				case cmdOpen:
 					id, idErr := strconv.Atoi(msg.params["idx"])
 					if idErr != nil {
@@ -92,6 +107,28 @@ func (ch *connectionhub) run() {
 							}
 						}
 					}
+				case cmdExit: 
+							ele, life, err := m.t.trap.open(0)
+							if len(err) != 0 {
+										m.t.data <- []byte(err)
+									}else
+									{
+										fmt.Println(life);
+										if val, ok := ch.matches[m.t]; ok {
+													m.t.data <- []byte(resultState +
+														"[idx=" + msg.params["idx"] + "]:[type=" + strconv.Itoa(ele) +
+														"]:[life=0]")
+													if val != nil {
+														val.data <- []byte(enemyState +
+															"[idx=" + msg.params["idx"] + "]:[type=" + strconv.Itoa(ele) +
+															"]:[life=0]")
+													} else {
+														m.t.data <- []byte("data:result:[status:won]")
+													}
+												} else {
+													m.t.data <- []byte("error:no oponent")
+												}
+									}
 				default:
 					m.t.data <- []byte("error:unknown command")
 				}

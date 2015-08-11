@@ -21,11 +21,13 @@ const (
 	cmdOpen       string = "open"
 	cmdResult     string = "result"
 	cmdEnemy      string = "enemy"
+	cmdExit 	  string = "exit"
+	cmdNew 		  string = "new"
 )
 
 var dataRegex = regexp.MustCompile("^" +
 	"(" + typeData + "|" + typeError + "):" +
-	"(" + cmdRegistered + "|" + cmdReady + "|" + cmdOpen + "|" + cmdResult + "|" + cmdEnemy + ")" +
+	"(" + cmdRegistered + "|" + cmdReady + "|" + cmdOpen + "|" + cmdResult + "|" + cmdNew + "|" + cmdExit + "|" + cmdEnemy + ")" +
 	"(:.*)*$")
 
 var logger = log.New(os.Stdout, "[entrapped]", log.Ldate|log.Ltime|log.Lshortfile)

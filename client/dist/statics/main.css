@@ -18,11 +18,23 @@
 }
 
 .block__visited {
-  background-color: #C8C8C8;
+  -webkit-animation-name: visited; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    animation-name: visited;
+    animation-duration: 2s;
+    background-color: #C8C8C8;
 }
 
 .block__dead {
+  -webkit-animation-name: dead; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    animation-name: dead;
+    animation-duration: 2s;
   background-color: #D36B6B;
+}
+
+.block__life {
+  background-color: green;
 }
 
 
@@ -102,4 +114,25 @@
   font-weight: 700;
   letter-spacing: 3px;
   outline: none;
+}
+
+
+@-webkit-keyframes visited {
+    from {background-color: #eee;}
+    to {background-color: #C8C8C8;}
+}
+
+@keyframes visited {
+    from {background-color: #eee;}
+    to {background-color: #C8C8C8;}
+}
+
+@-webkit-keyframes dead {
+    from {background-color: #eee;}
+    to {background-color: #D36B6B;}
+}
+
+@keyframes dead {
+    from {background-color: #eee;}
+    to {background-color: #D36B6B;}
 }

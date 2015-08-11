@@ -14,7 +14,8 @@ class Block extends React.Component {
       'block': this.props.of !== "player",
       'block__enemy': this.props.of === "player",
       'block__visited': this.props.status === 0 || this.props.status === 9,
-      'block__dead': this.props.status === -2
+      'block__dead fa fa-bomb': this.props.status === -2,
+      'block__life' : this.props.status === 2
     });
 
     return(
