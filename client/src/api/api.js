@@ -3,7 +3,7 @@
 var AppDispatcher = require('../dispatchers/app_dispatcher.js');
 var _ = require('../../src/utility/utils.js');
 
-var apiUrl = "localhost:7000";
+var apiUrl = "ws:localhost:7000";
 
 /* websocket reference */
 var conn = null;
